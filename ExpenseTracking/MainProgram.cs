@@ -2,12 +2,15 @@
 
 namespace ExpenseTracking
 {
-    internal class MainProgram
+    internal static class MainProgram
     {
-        public static string Main()
+        private static string? option;
+        public static void Main()
         {
-            FinancialManager expensemanager = new();
+            FinancialManager financialmanager = new();
 
+            while (true)
+            {
 
             Console.WriteLine("Digite o que deseja manipular: ");
             Console.WriteLine("1 - Despesas");
@@ -15,28 +18,31 @@ namespace ExpenseTracking
             Console.WriteLine("3 - Listar todos os dados");
             Console.WriteLine("4 - Sair");
 
-            string option = Console.ReadLine()!;
+            option = Console.ReadLine()!;
 
-            while (true)
-            {
+
+
                 switch (option)
                 {
                     case "1":
-                        expensemanager.AddExpense();
+                        financialmanager.AddExpense();
                         break;
                     case "2":
                         break;
                     case "3":
                         break;
                     case "4":
-                        break;
+                        return;
                     default:
                         Console.WriteLine("Digite uma opção válida!");
                         break;
                 }
-            return option;
             }
+        }
 
+        public static string GetOption()
+        {
+            return option!;
         }
     }
 }

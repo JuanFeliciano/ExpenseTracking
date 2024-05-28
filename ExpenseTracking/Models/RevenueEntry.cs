@@ -8,7 +8,7 @@ namespace ExpenseTracking.Models
 {
     public class RevenueEntry : FinancialEntry
     {
-        public RevenueEntry(DateTime date, int value, string description, string category) : base(date, value, description, category)
+        public RevenueEntry(int id,DateOnly date, int value, string description, string category) : base(id,date, value, description, category)
         { }
     }
 }

@@ -1,17 +1,20 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace ExpenseTracking.Models
 {
-    public class FinancialEntry
+    internal class UserInputData
     {
-        public int _id;
-        public DateOnly Date{ get; set; }
+        public DateOnly Date { get; set; }
         public int Value { get; set; }
         public string Description { get; set; }
         public string Category { get; set; }
 
-        public FinancialEntry(int id, DateOnly date, int value, string description, string category)
+        public UserInputData(DateOnly date, int value, string description, string category)
         {
-            _id = id;
             Date = date;
             Value = value;
             Description = description;
