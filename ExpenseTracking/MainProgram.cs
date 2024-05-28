@@ -7,7 +7,6 @@ namespace ExpenseTracking
         private static string? option;
         public static void Main()
         {
-            FinancialManager financialmanager = new();
 
             while (true)
             {
@@ -25,9 +24,11 @@ namespace ExpenseTracking
                 switch (option)
                 {
                     case "1":
-                        financialmanager.AddExpense();
+                        Console.Clear();
+                        MenuDefault.MenuOption();
                         break;
                     case "2":
+                        MenuDefault.MenuOption();
                         break;
                     case "3":
                         break;

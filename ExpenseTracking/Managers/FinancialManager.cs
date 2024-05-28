@@ -12,9 +12,9 @@ namespace ExpenseTracking.Managers
             AddData.AddDatas();
         }
 
-        public string EditExpense()
+        public void EditExpense()
         {
-            return "";
+            EditData.EditDatas();
         }
 
         public string DeleteExpense()

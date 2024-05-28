@@ -1,6 +1,6 @@
 ﻿using ExpenseTracking.Managers;
 using ExpenseTracking.Models;
-using System.Globalization;
+using ExpenseTracking.Services.Utilities;
 
 namespace ExpenseTracking.Services
 {
@@ -8,37 +8,21 @@ namespace ExpenseTracking.Services
     {
         public static void AddDatas()
         {
+            FinancialEntry searchItem;
             string menuOption = MainProgram.GetOption();
-            int idExpense = FinancialManager.expenseEntries.Count;
-            int idRevenue = FinancialManager.revenueEntries.Count;
-            Console.WriteLine("Digite os dados: ");
-
-            Console.WriteLine("Data (DD/MM/AAAA): ");
-            string dateTime = Console.ReadLine()!;
-            Console.WriteLine("Valor: ");
-            int value = int.Parse(Console.ReadLine()!);
-            Console.WriteLine("Descrição: ");
-            string description = Console.ReadLine()!;
-            Console.WriteLine("Categoria: ");
-            string category = Console.ReadLine()!;
-
-
-            if (!DateOnly.TryParseExact(dateTime, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateOnly date))
-            {
-                Console.WriteLine("Data inválida!");
-                return;
-            }
-
+            var userInput = UserInput.CollectUserInput();
 
             switch (menuOption)
             {
                 case "1":
-                    idExpense++;
-                    FinancialManager.expenseEntries.Add(new ExpenseEntry(idExpense, date, value, description, category));
+                    FinancialManager.expenseEntries.Add(new ExpenseEntry(userInput._id, userInput.Date, userInput.Value, userInput.Description, userInput.Category));
+                    searchItem = FinancialManager.expenseEntries.Find(pe => pe._id.Equals(userInput._id))!;
+                    Console.WriteLine($"ID: {searchItem._id}\nData: {searchItem!.Date}\nValor: {searchItem.Value}\nDescrição: {searchItem.Description}\nCategoria: {searchItem.Category}");
                     return;
                 case "2":
-                    idRevenue++;
-                    FinancialManager.revenueEntries.Add(new RevenueEntry(idRevenue, date, value, description, category));
+                    FinancialManager.revenueEntries.Add(new RevenueEntry(userInput._id, userInput.Date, userInput.Value, userInput.Description, userInput.Category));
+                    searchItem = FinancialManager.expenseEntries.Find(pe => pe._id.Equals(userInput._id))!;
+                    Console.WriteLine($"ID: {searchItem._id}\nData: {searchItem!.Date}\nValor: {searchItem.Value}\nDescrição: {searchItem.Description}\nCategoria: {searchItem.Category}");
                     return;
                 default:
                     return;

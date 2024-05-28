@@ -1,12 +1,18 @@
-﻿using ExpenseTracking.Models;
+﻿using ExpenseTracking.Managers;
+using ExpenseTracking.Models;
 using System.Globalization;
 
 namespace ExpenseTracking.Services.Utilities
 {
     internal class UserInput
     {
-        public static UserInputData CollectUserInput()
+        public static FinancialEntry CollectUserInput()
         {
+            string menuOption = MainProgram.GetOption();
+            int idExpense = FinancialManager.expenseEntries.Count;
+            int idRevenue = FinancialManager.revenueEntries.Count;
+
+
             Console.WriteLine("Digite os dados: ");
 
             Console.WriteLine("Data (DD/MM/AAAA): ");
@@ -19,7 +25,6 @@ namespace ExpenseTracking.Services.Utilities
                 Console.WriteLine("Valor inválido!");
             }
 
-
             Console.WriteLine("Descrição: ");
             string description = Console.ReadLine()!;
             Console.WriteLine("Categoria: ");
@@ -31,13 +36,19 @@ namespace ExpenseTracking.Services.Utilities
                 Console.WriteLine("Data inválida!");
             }
 
-            return new UserInputData
+            switch (menuOption)
             {
-                Date = date,
-                Value = value,
-                Description = description,
-                Category = category,
-            };
+                case "1":
+                    idExpense++;
+                return new FinancialEntry(idExpense,date, value, description, category);
+                case "2":
+                    idRevenue++;
+                    return new FinancialEntry(idRevenue, date, value, description, category);
+                default:
+                    return null!;
+
+            }
+
         }
     }
 }
