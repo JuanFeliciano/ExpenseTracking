@@ -7,24 +7,24 @@ namespace ExpenseTracking.Managers
     {
         public static List<ExpenseEntry> expenseEntries = new List<ExpenseEntry>();
         public static List<RevenueEntry> revenueEntries = new List<RevenueEntry>();
-        public void AddExpense()
+        public void AddData()
         {
-            AddData.AddDatas();
+            Services.AddData.AddDatas();
         }
 
-        public void EditExpense()
+        public void EditData()
         {
-            EditData.EditDatas();
+            Services.EditData.EditDatas();
         }
 
-        public void DeleteExpense()
+        public void DeleteData()
         {
-
+            Services.DeleteData.DeleteDatas();
         }
 
-        public void ShowExpenses()
+        public void ShowData()
         {
-            
+            Services.ShowData.ShowDatas();
         }
     }
 }

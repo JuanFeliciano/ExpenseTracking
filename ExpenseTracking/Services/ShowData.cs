@@ -19,7 +19,7 @@ namespace ExpenseTracking.Services
                     ShowEachData.ShowExpenseData();
                     return;
                 case "2":
-                ShowEachData.ShowRevenueData();
+                    ShowEachData.ShowRevenueData();
                     return;
             }
         }

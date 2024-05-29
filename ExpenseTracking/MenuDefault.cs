@@ -1,9 +1,5 @@
 ﻿using ExpenseTracking.Managers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ExpenseTracking.Services.Utilities;
 
 namespace ExpenseTracking
 {
@@ -13,30 +9,28 @@ namespace ExpenseTracking
         {
             FinancialManager financial = new();
 
-            Console.Clear();
-            Console.WriteLine("Escolha a opção que deseja:");
-            Console.WriteLine("1 - Adicionar");
-            Console.WriteLine("2 - Editar");
-            Console.WriteLine("3 - Listar todos os dados");
-            Console.WriteLine("4 - Sair");
-
+            ShowMenu.ShowMenuDefault();
             string option = Console.ReadLine()!;
                 
                 switch (option)
             {
                 case "1":
                     Console.Clear();
-                    financial.AddExpense();
+                    financial.AddData();
                     return;
                 case "2":
                     Console.Clear();
-                    financial.EditExpense();
+                    financial.EditData();
                     return;
                 case "3":
                     Console.Clear();
-                    financial.ShowExpenses();
+                    financial.ShowData();
                     return;
                 case "4":
+                    Console.Clear();
+                    financial.DeleteData();
+                    return;
+                case "5":
                     return;
                 default:
                     Console.WriteLine("Escolha uma opção válida!");

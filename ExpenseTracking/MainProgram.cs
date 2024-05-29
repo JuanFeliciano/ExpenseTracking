@@ -8,7 +8,6 @@ namespace ExpenseTracking
         private static string? option;
         public static void Main()
         {
-
             while (true)
             {
 
