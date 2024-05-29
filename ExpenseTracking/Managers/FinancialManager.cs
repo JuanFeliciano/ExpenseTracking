@@ -17,14 +17,14 @@ namespace ExpenseTracking.Managers
             EditData.EditDatas();
         }
 
-        public string DeleteExpense()
+        public void DeleteExpense()
         {
-            return "";
+
         }
 
-        public string ShowExpenses()
+        public void ShowExpenses()
         {
-            return "";
+            
         }
     }
 }

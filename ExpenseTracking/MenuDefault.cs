@@ -13,6 +13,7 @@ namespace ExpenseTracking
         {
             FinancialManager financial = new();
 
+            Console.Clear();
             Console.WriteLine("Escolha a opção que deseja:");
             Console.WriteLine("1 - Adicionar");
             Console.WriteLine("2 - Editar");
@@ -24,13 +25,17 @@ namespace ExpenseTracking
                 switch (option)
             {
                 case "1":
+                    Console.Clear();
                     financial.AddExpense();
                     return;
                 case "2":
+                    Console.Clear();
                     financial.EditExpense();
                     return;
                 case "3":
-                    break;
+                    Console.Clear();
+                    financial.ShowExpenses();
+                    return;
                 case "4":
                     return;
                 default:
