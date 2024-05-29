@@ -1,5 +1,4 @@
-﻿using ExpenseTracking.Managers;
-using ExpenseTracking.Services.Utilities;
+﻿using ExpenseTracking.managers;
 
 namespace ExpenseTracking
 {
@@ -10,29 +9,31 @@ namespace ExpenseTracking
             FinancialManager financial = new();
 
             ShowMenu.ShowMenuDefault();
-            string option = Console.ReadLine()!;
+            Console.ForegroundColor = ConsoleColor.White;
+            string option = Console.ReadLine()!.Trim();
                 
                 switch (option)
             {
                 case "1":
-                    Console.Clear();
                     financial.AddData();
-                    return;
+                    break;
                 case "2":
-                    Console.Clear();
                     financial.EditData();
-                    return;
+                    break;
                 case "3":
-                    Console.Clear();
                     financial.ShowData();
-                    return;
+                    break;
                 case "4":
+                    financial.SearchData();
+                    break;
+                case "5":
                     Console.Clear();
                     financial.DeleteData();
-                    return;
-                case "5":
+                    break;
+                case "6":
                     return;
                 default:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("Escolha uma opção válida!");
                     break;
             }

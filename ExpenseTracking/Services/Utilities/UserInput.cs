@@ -1,8 +1,8 @@
-﻿using ExpenseTracking.Managers;
-using ExpenseTracking.Models;
+﻿using ExpenseTracking.managers;
+using ExpenseTracking.models;
 using System.Globalization;
 
-namespace ExpenseTracking.Services.Utilities
+namespace ExpenseTracking.services.utilities
 {
     internal class UserInput
     {
@@ -12,29 +12,41 @@ namespace ExpenseTracking.Services.Utilities
             int idExpense = FinancialManager.expenseEntries.Count;
             int idRevenue = FinancialManager.revenueEntries.Count;
 
-
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Digite os dados: ");
 
             Console.WriteLine("Data (DD/MM/AAAA): ");
-            string dateTime = Console.ReadLine()!;
-            Console.WriteLine("Valor: ");
-            string userValue = Console.ReadLine()!;
-
-            if(!int.TryParse(userValue, out int value))
-            {
-                Console.WriteLine("Valor inválido!");
-            }
-
-            Console.WriteLine("Descrição: ");
-            string description = Console.ReadLine()!;
-            Console.WriteLine("Categoria: ");
-            string category = Console.ReadLine()!;
-
+            Console.ForegroundColor = ConsoleColor.White;
+            string dateTime = Console.ReadLine()!.Trim();
 
             if (!DateOnly.TryParseExact(dateTime, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateOnly date))
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Data inválida!");
             }
+
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Valor: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            string userValue = Console.ReadLine()!.Trim();
+
+            if(!int.TryParse(userValue, out int value))
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Valor inválido!");
+            }
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Descrição: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            string description = Console.ReadLine()!.Trim();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Categoria: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            string category = Console.ReadLine()!.Trim();
+
+
 
             switch (menuOption)
             {

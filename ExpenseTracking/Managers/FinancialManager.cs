@@ -1,7 +1,6 @@
-﻿using ExpenseTracking.Models;
-using ExpenseTracking.Services;
+﻿using ExpenseTracking.models;
 
-namespace ExpenseTracking.Managers
+namespace ExpenseTracking.managers
 {
     public class FinancialManager
     {
@@ -9,22 +8,27 @@ namespace ExpenseTracking.Managers
         public static List<RevenueEntry> revenueEntries = new List<RevenueEntry>();
         public void AddData()
         {
-            Services.AddData.AddDatas();
+            services.AddData.AddDatas();
         }
 
         public void EditData()
         {
-            Services.EditData.EditDatas();
+            services.EditData.EditDatas();
         }
 
         public void DeleteData()
         {
-            Services.DeleteData.DeleteDatas();
+            services.DeleteData.DeleteDatas();
         }
 
         public void ShowData()
         {
-            Services.ShowData.ShowDatas();
+            services.ShowData.ShowDatas();
+        }
+
+        public void SearchData()
+        {
+            services.SearchData.SearchDatas();
         }
     }
 }

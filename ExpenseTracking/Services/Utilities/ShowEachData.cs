@@ -1,19 +1,17 @@
-﻿using ExpenseTracking.Managers;
-using ExpenseTracking.Models;
-using System.Reflection.Metadata.Ecma335;
+﻿using ExpenseTracking.managers;
 
-namespace ExpenseTracking.Services.Utilities
+namespace ExpenseTracking.services.utilities
 {
     internal class ShowEachData
 
     {
         public static void ShowExpenseData()
         {
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Despesas: ");
             if (FinancialManager.expenseEntries.Count > 0)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Green;
                 FinancialManager.expenseEntries.ForEach(ee => Console.WriteLine($"ID: {ee._id} Data: {ee.Date} Valor: {ee.Value} Descrição: {ee.Description} Categoria: {ee.Category}\n"));
             }
             else
@@ -24,7 +22,7 @@ namespace ExpenseTracking.Services.Utilities
         }
         public static void ShowRevenueData()
         {
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Receitas:");
             if (FinancialManager.revenueEntries.Count > 0)
             {

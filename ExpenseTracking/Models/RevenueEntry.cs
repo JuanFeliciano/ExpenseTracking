@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-namespace ExpenseTracking.Models
+namespace ExpenseTracking.models
 {
     public class RevenueEntry : FinancialEntry
     {

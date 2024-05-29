@@ -1,5 +1,4 @@
-﻿using ExpenseTracking.Managers;
-using ExpenseTracking.Services.Utilities;
+﻿using ExpenseTracking.services.utilities;
 
 namespace ExpenseTracking
 {
@@ -10,16 +9,9 @@ namespace ExpenseTracking
         {
             while (true)
             {
-
-                Console.WriteLine("Digite o que deseja manipular: ");
-                Console.WriteLine("1 - Despesas");
-                Console.WriteLine("2 - Receitas");
-                Console.WriteLine("3 - Listar todos os dados");
-                Console.WriteLine("4 - Sair");
-
-                option = Console.ReadLine()!;
-
-
+                ShowMenu.ShowMenuMain();
+                Console.ForegroundColor = ConsoleColor.White;
+                option = Console.ReadLine()!.Trim();
 
                 switch (option)
                 {
@@ -28,15 +20,19 @@ namespace ExpenseTracking
                         MenuDefault.MenuOption();
                         break;
                     case "2":
+                        Console.Clear();
                         MenuDefault.MenuOption();
                         break;
                     case "3":
+                        Console.Clear();
                         ShowEachData.ShowExpenseData();
                         ShowEachData.ShowRevenueData();
                         break;
                     case "4":
                         return;
                     default:
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Digite uma opção válida!");
                         break;
                 }

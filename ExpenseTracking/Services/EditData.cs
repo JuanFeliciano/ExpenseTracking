@@ -1,8 +1,8 @@
-﻿using ExpenseTracking.Managers;
-using ExpenseTracking.Models;
-using ExpenseTracking.Services.Utilities;
+﻿using ExpenseTracking.managers;
+using ExpenseTracking.models;
+using ExpenseTracking.services.utilities;
 
-namespace ExpenseTracking.Services
+namespace ExpenseTracking.services
 {
     internal class EditData
     {
@@ -11,8 +11,10 @@ namespace ExpenseTracking.Services
             string option = MainProgram.GetOption();
             FinancialEntry itemQuery;
 
-            Console.WriteLine("Digite por ID o item desejado para remover: ");
-            int idUser = int.Parse(Console.ReadLine()!);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Digite por ID o item desejado para editar: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            int idUser = int.Parse(Console.ReadLine()!.Trim());
             
             var userInput = UserInput.CollectUserInput();
 
@@ -26,10 +28,12 @@ namespace ExpenseTracking.Services
                     }
                     else
                     {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("ID inválido!");
                         return;
                     }
                     FinancialManager.expenseEntries.Add(new ExpenseEntry(idUser, userInput.Date,userInput.Value, userInput.Description, userInput.Category));
+                    Console.WriteLine($"ID: {userInput._id} Data: {userInput!.Date} Valor: {userInput.Value} Descrição: {userInput.Description} Categoria: {userInput.Category}");
                     return;
                 case "2":
                     itemQuery = FinancialManager.revenueEntries.Find(pe => pe._id.Equals(idUser))!;
@@ -39,6 +43,7 @@ namespace ExpenseTracking.Services
                     } 
                     else
                     {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("ID inválido!");
                         return;
                     }

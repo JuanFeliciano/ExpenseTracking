@@ -1,6 +1,6 @@
-﻿using ExpenseTracking.Managers;
+﻿using ExpenseTracking.managers;
 
-namespace ExpenseTracking.Services
+namespace ExpenseTracking.services
 {
     internal class DeleteData
     {
@@ -8,23 +8,34 @@ namespace ExpenseTracking.Services
         {
             string option = MainProgram.GetOption();
 
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Você tem certeza desta ação? (s/n): ");
-            bool sure = Console.ReadLine()!.ToLower() == "s";
+            Console.ForegroundColor = ConsoleColor.White;
+            string sure = Console.ReadLine()!.Trim().ToLower();
 
-            if(sure && option == "1")
+            if(sure == "s" && option == "1")
             {
-                    FinancialManager.expenseEntries.Clear();
-                    Console.WriteLine("Todos os itens removidos!");
-                    return;
+                FinancialManager.expenseEntries.Clear();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Todos os itens removidos!");
+                return;
+            }else if (sure == "n" && option == "1")
+            {
+                Console.WriteLine("Voltando ao menu principal...");
             }
-            else if (sure && option == "2")
+            else if (sure == "s" && option == "2")
             {
                     FinancialManager.revenueEntries.Clear();
-                    Console.WriteLine("Todos os itens removidos!");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Todos os itens removidos!");
                     return;
+            }else if (sure == "n" && option == "2")
+            {
+                Console.WriteLine("Voltando ao menu principal...");
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Voltando ao menu principal...");
                 return;
             }

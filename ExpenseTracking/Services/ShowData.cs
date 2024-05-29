@@ -1,11 +1,6 @@
-﻿using ExpenseTracking.Services.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ExpenseTracking.services.utilities;
 
-namespace ExpenseTracking.Services
+namespace ExpenseTracking.services
 {
     internal class ShowData
     {

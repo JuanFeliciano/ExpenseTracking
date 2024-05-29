@@ -1,6 +1,6 @@
 ﻿
 
-namespace ExpenseTracking.Services.Utilities
+namespace ExpenseTracking.services.utilities
 {
     public class ChangeString
     {
@@ -24,7 +24,7 @@ namespace ExpenseTracking.Services.Utilities
         public string SingularReturn()
         {
             string option = MainProgram.GetOption();
-            string singular = "receita";
+            string singular = "";
 
             if (option == "1")
             {

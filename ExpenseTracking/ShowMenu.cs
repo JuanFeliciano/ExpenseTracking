@@ -1,4 +1,4 @@
-﻿using ExpenseTracking.Services.Utilities;
+﻿using ExpenseTracking.services.utilities;
 
 namespace ExpenseTracking
 {
@@ -7,19 +7,19 @@ namespace ExpenseTracking
         {
             ChangeString singularPlural = new();
 
-            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Escolha a opção que deseja:");
             Console.WriteLine($"1 - Adicionar {singularPlural.SingularReturn()}");
             Console.WriteLine($"2 - Editar {singularPlural.SingularReturn()}");
             Console.WriteLine($"3 - Listar todos as {singularPlural.PluralReturn()}");
-            Console.WriteLine($"4 - Buscar {singularPlural.SingularReturn} única");
+            Console.WriteLine($"4 - Buscar {singularPlural.SingularReturn()} única");
             Console.WriteLine($"5 - Remover todos as {singularPlural.PluralReturn()}");
             Console.WriteLine("6 - Sair");
         }
 
         public static void ShowMenuMain()
         {
-            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Digite o que deseja manipular: ");
             Console.WriteLine("1 - Despesas");
             Console.WriteLine("2 - Receitas");
@@ -29,7 +29,7 @@ namespace ExpenseTracking
 
         public static void ShowSearchMenu()
         {
-            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Digite o número de acordo com a opção desejada de busca");
             Console.WriteLine("1 - Range de data (data-inicial > data-final)");
             Console.WriteLine("2 - Valor mínimo");
