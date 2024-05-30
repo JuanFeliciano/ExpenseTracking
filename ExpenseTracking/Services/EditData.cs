@@ -1,5 +1,4 @@
 ﻿using ExpenseTracking.managers;
-using ExpenseTracking.models;
 using ExpenseTracking.services.utilities;
 
 namespace ExpenseTracking.services
@@ -9,60 +8,29 @@ namespace ExpenseTracking.services
         public static void EditDatas()
         {
             string option = MainProgram.GetOption();
-            FinancialEntry itemQuery;
-            int idUser;
-            
-            while (true)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Digite por ID o item desejado para editar: ");
-                Console.ForegroundColor = ConsoleColor.White;
-                string id = Console.ReadLine()!.Trim();
-
-                if (int.TryParse(id, out idUser))
-                {
-                    break;  
-                }
-
-            }
 
             switch (option)
             {
                 case "1":
-                    itemQuery = FinancialManager.expenseEntries.Find(pe => pe._id.Equals(idUser))!;
-                    if (itemQuery is ExpenseEntry expenseEntry && itemQuery != null)
-                    {
-                        FinancialManager.expenseEntries.Remove(expenseEntry);
-                    }
-                    else
+                    if (FinancialManager.expenseEntries.Count <= 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("ID inválido!");
+                        Console.WriteLine("Não existem itens para edição!");
                         return;
                     }
-                    var userInput = UserInput.CollectUserInput();
-                    FinancialManager.expenseEntries.Add(new ExpenseEntry(idUser, userInput.Date, userInput.Value, userInput.Description, userInput.Category));
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"Item editado com sucesso!\nID: {idUser} Data: {userInput!.Date} Valor: {userInput.Value} Descrição: {userInput.Description} Categoria: {userInput.Category}");
+                    EditEachData.EditExpenseData();
                     return;
                 case "2":
-                    itemQuery = FinancialManager.revenueEntries.Find(pe => pe._id.Equals(idUser))!;
-                    if (itemQuery is RevenueEntry revenueEntry && itemQuery != null)
-                    {
-                        FinancialManager.revenueEntries.Remove(revenueEntry);
-                    }
-                    else
+                    if (FinancialManager.revenueEntries.Count <= 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("ID inválido!");
+                        Console.WriteLine("Não existem itens para edição!");
                         return;
                     }
-                    var userOutput = UserInput.CollectUserInput();
-                    FinancialManager.revenueEntries.Add(new RevenueEntry(idUser, userOutput.Date, userOutput.Value, userOutput.Description, userOutput.Category));
-                    Console.WriteLine($"Item editado com sucesso!\nID: {idUser} Data: {userOutput!.Date} Valor: {userOutput.Value} Descrição: {userOutput.Description} Categoria: {userOutput.Category}");
+                    EditEachData.EditRevenueData();
                     return;
             }
+
         }
     }
 }

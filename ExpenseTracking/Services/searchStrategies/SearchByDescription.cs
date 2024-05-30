@@ -1,11 +1,11 @@
 ﻿using ExpenseTracking.managers;
 using ExpenseTracking.services.utilities;
 
-namespace ExpenseTracking.services
+namespace ExpenseTracking.services.searchStrategies
 {
-    internal class ShowData
+    internal class SearchByDescription
     {
-        public static void ShowDatas()
+        public static void SearchDescription()
         {
             string option = MainProgram.GetOption();
 
@@ -14,22 +14,21 @@ namespace ExpenseTracking.services
                 case "1":
                     if (FinancialManager.expenseEntries.Count <= 0)
                     {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Não existem itens na lista!");
                         return;
                     }
-                    ShowEachData.ShowExpenseData();
+                    SearchEachDescription.SearchDescriptionExpense();
                     return;
                 case "2":
                     if (FinancialManager.revenueEntries.Count <= 0)
                     {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Não existem itens na lista!");
                         return;
                     }
-                    ShowEachData.ShowRevenueData();
+                    SearchEachDescription.SearchDescriptionRevenue();
                     return;
             }
+
         }
     }
 }

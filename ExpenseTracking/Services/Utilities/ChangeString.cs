@@ -1,6 +1,4 @@
-﻿
-
-namespace ExpenseTracking.services.utilities
+﻿namespace ExpenseTracking.services.utilities
 {
     public class ChangeString
     {

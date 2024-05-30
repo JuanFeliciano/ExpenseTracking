@@ -36,6 +36,7 @@ namespace ExpenseTracking
             Console.WriteLine("3 - Valor máximo");
             Console.WriteLine("4 - Descrição");
             Console.WriteLine("5 - Categoria");
+            Console.WriteLine("6 - Sair");
         }
     }
 }

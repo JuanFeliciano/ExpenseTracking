@@ -1,5 +1,4 @@
-﻿
-namespace ExpenseTracking.models
+﻿namespace ExpenseTracking.models
 {
     public class FinancialEntry
     {

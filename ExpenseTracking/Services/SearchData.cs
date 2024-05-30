@@ -1,6 +1,4 @@
-﻿
-
-using ExpenseTracking.services.searchStrategies;
+﻿using ExpenseTracking.services.searchStrategies;
 
 namespace ExpenseTracking.services
 {
@@ -9,6 +7,7 @@ namespace ExpenseTracking.services
         public static void SearchDatas()
         {
             ShowMenu.SearchMenu();
+            Console.ForegroundColor = ConsoleColor.White;
             string optionSearch = Console.ReadLine()!;
 
             switch (optionSearch)
@@ -25,8 +24,12 @@ namespace ExpenseTracking.services
                     SearchByValue.SearchByMaxValue();
                     return;
                 case "4":
+                    SearchByDescription.SearchDescription();
                     return;
                 case "5":
+                    SearchByCategory.SearchCategory();
+                    return;
+                case "6":
                     return;
                 default:
                     Console.ForegroundColor = ConsoleColor.Yellow;

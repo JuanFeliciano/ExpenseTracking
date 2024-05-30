@@ -21,6 +21,7 @@ namespace ExpenseTracking.services.utilities
 
                 while (true)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Data (DD/MM/AAAA): ");
                     Console.ForegroundColor = ConsoleColor.White;
                     string dateTime = Console.ReadLine()!.Trim();
