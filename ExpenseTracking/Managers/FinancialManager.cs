@@ -4,29 +4,29 @@ namespace ExpenseTracking.managers
 {
     public class FinancialManager
     {
-        public static List<ExpenseEntry> expenseEntries = new List<ExpenseEntry>();
-        public static List<RevenueEntry> revenueEntries = new List<RevenueEntry>();
-        public void AddData()
+        public static List<ExpenseEntry> expenseEntries = new ();
+        public static List<RevenueEntry> revenueEntries = new ();
+        public static void AddData()
         {
             services.AddData.AddDatas();
         }
 
-        public void EditData()
+        public static void EditData()
         {
             services.EditData.EditDatas();
         }
 
-        public void DeleteData()
+        public static void DeleteData()
         {
             services.DeleteData.DeleteDatas();
         }
 
-        public void ShowData()
+        public static void ShowData()
         {
             services.ShowData.ShowDatas();
         }
 
-        public void SearchData()
+        public static void SearchData()
         {
             services.SearchData.SearchDatas();
         }

@@ -8,7 +8,7 @@ namespace ExpenseTracking.services
     {
         public static void SearchDatas()
         {
-            ShowMenu.ShowSearchMenu();
+            ShowMenu.SearchMenu();
             string optionSearch = Console.ReadLine()!;
 
             switch (optionSearch)
@@ -18,8 +18,11 @@ namespace ExpenseTracking.services
                     SearchByDate.SearchDate();
                     break;
                 case "2":
+                    Console.Clear();
+                    SearchByValue.SearchByMinValue();
                     return;
                 case "3":
+                    SearchByValue.SearchByMaxValue();
                     return;
                 case "4":
                     return;

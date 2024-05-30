@@ -6,29 +6,28 @@ namespace ExpenseTracking
     {
         public static void MenuOption()
         {
-            FinancialManager financial = new();
 
-            ShowMenu.ShowMenuDefault();
+            ShowMenu.MenuDefault();
             Console.ForegroundColor = ConsoleColor.White;
             string option = Console.ReadLine()!.Trim();
                 
                 switch (option)
             {
                 case "1":
-                    financial.AddData();
+                    FinancialManager.AddData();
                     break;
                 case "2":
-                    financial.EditData();
+                    FinancialManager.EditData();
                     break;
                 case "3":
-                    financial.ShowData();
+                    FinancialManager.ShowData();
                     break;
                 case "4":
-                    financial.SearchData();
+                    FinancialManager.SearchData();
                     break;
                 case "5":
                     Console.Clear();
-                    financial.DeleteData();
+                    FinancialManager.DeleteData();
                     break;
                 case "6":
                     return;

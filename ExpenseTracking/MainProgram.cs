@@ -9,7 +9,7 @@ namespace ExpenseTracking
         {
             while (true)
             {
-                ShowMenu.ShowMenuMain();
+                ShowMenu.MenuMain();
                 Console.ForegroundColor = ConsoleColor.White;
                 option = Console.ReadLine()!.Trim();
 

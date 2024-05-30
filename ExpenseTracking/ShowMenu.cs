@@ -3,7 +3,7 @@
 namespace ExpenseTracking
 {
     internal class ShowMenu
-    {   public static void ShowMenuDefault()
+    {   public static void MenuDefault()
         {
             ChangeString singularPlural = new();
 
@@ -17,7 +17,7 @@ namespace ExpenseTracking
             Console.WriteLine("6 - Sair");
         }
 
-        public static void ShowMenuMain()
+        public static void MenuMain()
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Digite o que deseja manipular: ");
@@ -27,7 +27,7 @@ namespace ExpenseTracking
             Console.WriteLine("4 - Sair");
         }
 
-        public static void ShowSearchMenu()
+        public static void SearchMenu()
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Digite o número de acordo com a opção desejada de busca");
