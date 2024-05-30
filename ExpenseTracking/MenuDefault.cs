@@ -1,4 +1,5 @@
 ﻿using ExpenseTracking.managers;
+using ExpenseTracking.services;
 
 namespace ExpenseTracking
 {
@@ -10,8 +11,8 @@ namespace ExpenseTracking
             ShowMenu.MenuDefault();
             Console.ForegroundColor = ConsoleColor.White;
             string option = Console.ReadLine()!.Trim();
-                
-                switch (option)
+
+            switch (option)
             {
                 case "1":
                     FinancialManager.AddData();
@@ -26,10 +27,13 @@ namespace ExpenseTracking
                     FinancialManager.SearchData();
                     break;
                 case "5":
+                    FinancialManager.DeleteOneData();
+                    break;
+                case "6":
                     Console.Clear();
                     FinancialManager.DeleteData();
                     break;
-                case "6":
+                case "7":
                     return;
                 default:
                     Console.ForegroundColor = ConsoleColor.Yellow;

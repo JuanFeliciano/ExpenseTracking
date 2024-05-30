@@ -16,6 +16,10 @@ namespace ExpenseTracking.managers
             services.EditData.EditDatas();
         }
 
+        public static void DeleteOneData()
+        {
+            services.DeleteOneData.DeleteOneDatas();
+        }
         public static void DeleteData()
         {
             services.DeleteData.DeleteDatas();

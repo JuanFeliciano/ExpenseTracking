@@ -12,9 +12,10 @@ namespace ExpenseTracking
             Console.WriteLine($"1 - Adicionar {singularPlural.SingularReturn()}");
             Console.WriteLine($"2 - Editar {singularPlural.SingularReturn()}");
             Console.WriteLine($"3 - Listar todos as {singularPlural.PluralReturn()}");
-            Console.WriteLine($"4 - Buscar {singularPlural.SingularReturn()} única");
-            Console.WriteLine($"5 - Remover todos as {singularPlural.PluralReturn()}");
-            Console.WriteLine("6 - Sair");
+            Console.WriteLine($"4 - Buscar {singularPlural.SingularReturn()} por filtro");
+            Console.WriteLine($"5 - Remover {singularPlural.SingularReturn()} única");
+            Console.WriteLine($"6 - Remover todos as {singularPlural.PluralReturn()}");
+            Console.WriteLine("7 - Sair");
         }
 
         public static void MenuMain()
@@ -23,15 +24,15 @@ namespace ExpenseTracking
             Console.WriteLine("Digite o que deseja manipular: ");
             Console.WriteLine("1 - Despesas");
             Console.WriteLine("2 - Receitas");
-            Console.WriteLine("3 - Listar todos os dados");
+            Console.WriteLine("3 - Mostrar todos os dados");
             Console.WriteLine("4 - Sair");
         }
 
         public static void SearchMenu()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Digite o número de acordo com a opção desejada de busca");
-            Console.WriteLine("1 - Range de data (data-inicial > data-final)");
+            Console.WriteLine("Digite o número para o filtro desejado: ");
+            Console.WriteLine("1 - Range de data (data-inicial <> data-final)");
             Console.WriteLine("2 - Valor mínimo");
             Console.WriteLine("3 - Valor máximo");
             Console.WriteLine("4 - Descrição");
