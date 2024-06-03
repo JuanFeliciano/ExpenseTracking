@@ -16,14 +16,14 @@ namespace ExpenseTracking.services.utilities
             while (true)
             {
                 DateOnly date;
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Digite os dados: ");
 
                 while (true)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Data (DD/MM/AAAA): ");
                     Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("Data (DD/MM/AAAA): ");
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     string dateTime = Console.ReadLine()!.Trim();
 
                     if (DateOnly.TryParseExact(dateTime, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
@@ -38,9 +38,9 @@ namespace ExpenseTracking.services.utilities
                 float value;
                 while (true)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Valor (xx,x): ");
                     Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("Valor (xx,x): ");
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     string userValue = Console.ReadLine()!.Trim();
 
                     if (float.TryParse(userValue, out value))
@@ -53,13 +53,13 @@ namespace ExpenseTracking.services.utilities
 
                 }
 
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Descrição: ");
-                Console.ForegroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Blue;
                 string description = Console.ReadLine()!.Trim();
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Categoria: ");
                 Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Categoria: ");
+                Console.ForegroundColor = ConsoleColor.Blue;
                 string category = Console.ReadLine()!.Trim();
 
 

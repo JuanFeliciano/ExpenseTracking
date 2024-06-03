@@ -1,10 +1,5 @@
 ﻿using ExpenseTracking.managers;
 using ExpenseTracking.models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpenseTracking.services.utilities
 {
@@ -14,9 +9,9 @@ namespace ExpenseTracking.services.utilities
         {
             FinancialEntry itemQuery;
 
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Digite por ID o item desejado para editar: ");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Digite por ID a despesa desejada para edição: ");
+            Console.ForegroundColor = ConsoleColor.Blue;
             string id = Console.ReadLine()!.Trim();
 
             if(!int.TryParse(id, out int userId))
@@ -31,7 +26,7 @@ namespace ExpenseTracking.services.utilities
             if (itemQuery is ExpenseEntry expenseEntry && itemQuery != null)
             {
                 FinancialManager.expenseEntries.Remove(expenseEntry);
-                Console.ForegroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Despesa deletada com sucesso!");
             }
             else
@@ -46,9 +41,9 @@ namespace ExpenseTracking.services.utilities
         {
             FinancialEntry itemQuery;
 
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Digite por ID o item desejado para editar: ");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Digite por ID a receita desejada para edição: ");
+            Console.ForegroundColor = ConsoleColor.Blue;
             string id = Console.ReadLine()!.Trim();
 
             if (!int.TryParse(id, out int userId))

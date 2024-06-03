@@ -13,11 +13,11 @@ namespace ExpenseTracking.services
 
             while (true)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Todos os itens da lista serão removidos.");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Você tem certeza desta ação? (s/n): ");
                 Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Todos as despesas da lista serão removidas.");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Você tem certeza desta ação? (s/n): ");
+                Console.ForegroundColor = ConsoleColor.Blue;
                 string sure = Console.ReadLine()!.Trim().ToLower();
 
 
@@ -28,17 +28,18 @@ namespace ExpenseTracking.services
                     {
                         case 0:
                             Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.WriteLine("Não existem itens para serem excluídos");
+                            Console.WriteLine("Não existem despesas para serem excluídas");
                             return;
                     }
 
                     FinancialManager.expenseEntries.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Todos os itens removidos!");
+                    Console.WriteLine("Todos as despesas removidas!");
                     return;
                 }
                 else if (sure == "n" && option == "1")
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Voltando ao menu principal!");
                     return;
                 }
@@ -48,16 +49,17 @@ namespace ExpenseTracking.services
                     {
                         case 0:
                             Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.WriteLine("Não existem itens para serem excluídos");
+                            Console.WriteLine("Não existem receitas para serem excluídas");
                             return;
                     }
                     FinancialManager.revenueEntries.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Todos os itens removidos!");
+                    Console.WriteLine("Todos as receitas removidos!");
                     return;
                 }
                 else if (sure == "n" && option == "2")
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Voltando ao menu principal!");
                     return;
                 }

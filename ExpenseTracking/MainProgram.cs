@@ -10,7 +10,7 @@ namespace ExpenseTracking
             while (true)
             {
                 ShowMenu.MenuMain();
-                Console.ForegroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Blue;
                 option = Console.ReadLine()!.Trim();
 
                 switch (option)

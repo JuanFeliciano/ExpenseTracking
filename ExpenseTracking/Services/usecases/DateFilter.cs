@@ -13,14 +13,14 @@ namespace ExpenseTracking.services.usecases
             {
                 foreach (var ee in matchingExpenses)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"ID: {ee._id} Data: {ee.Date} Valor: {ee.Value} Descrição: {ee.Description} Categoria: {ee.Category}\n");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"ID: {ee._id} Data: {ee.Date} Valor: -{ee.Value} Descrição: {ee.Description} Categoria: {ee.Category}\n");
                 }
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Não existem dados para busca!");
+                Console.WriteLine("Não existem despesas para busca!");
             }
         }
 
@@ -39,7 +39,7 @@ namespace ExpenseTracking.services.usecases
             else
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Não existem dados para busca!");
+                Console.WriteLine("Não existem receitas para busca!");
             }
         }
     }

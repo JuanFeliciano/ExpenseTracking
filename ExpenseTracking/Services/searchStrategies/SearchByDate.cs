@@ -30,9 +30,9 @@ namespace ExpenseTracking.services.searchStrategies
                 DateOnly initDate;
                 while (true)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Digite a data inicial (dd/MM/yyyy): ");
                     Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("Digite a data inicial (dd/MM/yyyy): ");
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     string initialDate = Console.ReadLine()!;
 
                     if (DateOnly.TryParse(initialDate, out initDate))
@@ -46,9 +46,9 @@ namespace ExpenseTracking.services.searchStrategies
                 DateOnly finDate;
                 while (true)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Digite a data final (dd/MM/yyyy): ");
                     Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("Digite a data final (dd/MM/yyyy): ");
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     string finalDate = Console.ReadLine()!;
 
                     if (DateOnly.TryParse(finalDate, out finDate))

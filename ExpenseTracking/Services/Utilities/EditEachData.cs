@@ -9,9 +9,9 @@ namespace ExpenseTracking.services.utilities
         {
             FinancialEntry itemQuery;
 
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Digite por ID o item desejado para editar: ");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Digite por ID o item desejado para editar: ");
+            Console.ForegroundColor = ConsoleColor.Blue;
             int id = int.Parse(Console.ReadLine()!.Trim());
 
             itemQuery = FinancialManager.expenseEntries.Find(pe => pe._id.Equals(id))!;
@@ -29,8 +29,8 @@ namespace ExpenseTracking.services.utilities
             var userInput = UserInput.CollectUserInput();
             FinancialManager.expenseEntries.Add(new ExpenseEntry(id, userInput.Date, userInput.Value, userInput.Description, userInput.Category));
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Item editado com sucesso!\nID: {id} Data: {userInput!.Date} Valor: {userInput.Value} Descrição: {userInput.Description} Categoria: {userInput.Category}");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Despesa editada com sucesso!\nID: {id} Data: {userInput!.Date} Valor: -{userInput.Value} Descrição: {userInput.Description} Categoria: {userInput.Category}");
             return;
         }
 
@@ -38,9 +38,9 @@ namespace ExpenseTracking.services.utilities
         {
             FinancialEntry itemQuery;
 
-            Console.ForegroundColor = ConsoleColor.Red; 
+            Console.ForegroundColor = ConsoleColor.White; 
             Console.WriteLine("Digite por ID o item desejado para editar: ");
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Blue;
             int id = int.Parse(Console.ReadLine()!.Trim());
 
             itemQuery = FinancialManager.expenseEntries.Find(pe => pe._id.Equals(id))!;
@@ -58,7 +58,7 @@ namespace ExpenseTracking.services.utilities
             FinancialManager.expenseEntries.Add(new ExpenseEntry(id, userInput.Date, userInput.Value, userInput.Description, userInput.Category));
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Item editado com sucesso!\nID: {id} Data: {userInput!.Date} Valor: {userInput.Value} Descrição: {userInput.Description} Categoria: {userInput.Category}");
+            Console.WriteLine($"Receita editada com sucesso!\nID: {id} Data: {userInput!.Date} Valor: {userInput.Value} Descrição: {userInput.Description} Categoria: {userInput.Category}");
             return;
         }
     }

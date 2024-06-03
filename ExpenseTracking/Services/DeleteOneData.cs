@@ -20,8 +20,6 @@ namespace ExpenseTracking.services
                     return;
                 case "2":
                     DeleteEachData.DeleteRevenueData();
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Receita deletada com sucesso!");
                     return;
             }
         }

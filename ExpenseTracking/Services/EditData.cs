@@ -15,7 +15,7 @@ namespace ExpenseTracking.services
                     if (FinancialManager.expenseEntries.Count <= 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("Não existem itens para edição!");
+                        Console.WriteLine("Não existem despesas para edição!");
                         return;
                     }
                     EditEachData.EditExpenseData();
@@ -24,7 +24,7 @@ namespace ExpenseTracking.services
                     if (FinancialManager.revenueEntries.Count <= 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("Não existem itens para edição!");
+                        Console.WriteLine("Não existem receitas para edição!");
                         return;
                     }
                     EditEachData.EditRevenueData();

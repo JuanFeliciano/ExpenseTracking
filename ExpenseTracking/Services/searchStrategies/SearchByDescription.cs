@@ -14,6 +14,7 @@ namespace ExpenseTracking.services.searchStrategies
                 case "1":
                     if (FinancialManager.expenseEntries.Count <= 0)
                     {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Não existem itens na lista!");
                         return;
                     }
@@ -22,6 +23,7 @@ namespace ExpenseTracking.services.searchStrategies
                 case "2":
                     if (FinancialManager.revenueEntries.Count <= 0)
                     {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Não existem itens na lista!");
                         return;
                     }
