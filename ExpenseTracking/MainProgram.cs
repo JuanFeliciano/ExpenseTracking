@@ -1,15 +1,21 @@
 ﻿using ExpenseTracking.services.utilities;
+using System.Runtime.CompilerServices;
 
 namespace ExpenseTracking
 {
     internal static class MainProgram
     {
         private static string? option;
+        private delegate void Menu();
         public static void Main()
         {
+            
             while (true)
             {
-                ShowMenu.MenuMain();
+                Menu showMenu = new Menu(ShowMenu.MenuMain);
+
+                showMenu();
+
                 Console.ForegroundColor = ConsoleColor.Blue;
                 option = Console.ReadLine()!.Trim();
 

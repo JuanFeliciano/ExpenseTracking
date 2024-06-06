@@ -14,18 +14,16 @@ namespace ExpenseTracking.services
             switch (menuOption)
             {
                 case "1":
-                    FinancialManager.expenseEntries.Add(new ExpenseEntry(userInput._id, userInput.Date, userInput.Value, userInput.Description, userInput.Category));
-                    userInput = FinancialManager.expenseEntries.Find(pe => pe._id.Equals(userInput._id))!;
+                    FinancialManager.expenseEntries.Add(new ExpenseEntry(userInput.Id, userInput.Date, userInput.Value, userInput.Description, userInput.Category));
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"ID: {userInput._id} Data: {userInput!.Date} Valor: -{userInput.Value} Descrição: {userInput.Description} Categoria: {userInput.Category}");
+                    Console.WriteLine($"ID: {userInput.Id} Data: {userInput!.Date} Valor: -{userInput.Value} Descrição: {userInput.Description} Categoria: {userInput.Category}");
                     return;
                 case "2":
-                    FinancialManager.revenueEntries.Add(new RevenueEntry(userInput._id, userInput.Date, userInput.Value, userInput.Description, userInput.Category));
-                    userInput = FinancialManager.revenueEntries.Find(pe => pe._id.Equals(userInput._id))!;
+                    FinancialManager.revenueEntries.Add(new RevenueEntry(userInput.Id, userInput.Date, userInput.Value, userInput.Description, userInput.Category));
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"ID: {userInput._id} Data: {userInput!.Date} Valor: {userInput.Value} Descrição: {userInput.Description} Categoria: {userInput.Category}");
+                    Console.WriteLine($"ID: {userInput.Id} Data: {userInput!.Date} Valor: {userInput.Value} Descrição: {userInput.Description} Categoria: {userInput.Category}");
                     return;
             }
         }

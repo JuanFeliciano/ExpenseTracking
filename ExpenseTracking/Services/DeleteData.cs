@@ -24,14 +24,12 @@ namespace ExpenseTracking.services
 
                 if (sure == "s" && option == "1")
                 {
-                    switch (lenghtExpense)
+                    if (lenghtExpense == 0)
                     {
-                        case 0:
-                            Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.WriteLine("Não existem despesas para serem excluídas");
-                            return;
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Não existem despesas para serem excluídas");
+                        return;
                     }
-
                     FinancialManager.expenseEntries.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Todos as despesas removidas!");

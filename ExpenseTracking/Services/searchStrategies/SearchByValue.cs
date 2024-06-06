@@ -1,5 +1,4 @@
 ﻿using ExpenseTracking.managers;
-using ExpenseTracking.services.utilities;
 
 namespace ExpenseTracking.services.searchStrategies
 {
@@ -12,7 +11,7 @@ namespace ExpenseTracking.services.searchStrategies
             switch (option)
             {
                 case "1":
-                    if(FinancialManager.expenseEntries.Count == 0)
+                    if (FinancialManager.expenseEntries.Count == 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Não existem despesas para busca!");
@@ -33,19 +32,26 @@ namespace ExpenseTracking.services.searchStrategies
             {
                 case "1":
                     var minExpense = FinancialManager.expenseEntries.Min(ee => ee.Value);
-                    var itemMinExp = FinancialManager.expenseEntries.Find(ee => ee.Value.Equals(minExpense));
+                    var minExpenseItems = FinancialManager.expenseEntries.Where(ee => ee.Value.Equals(minExpense));
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("Despesa com menos valor:");
-                    Console.ForegroundColor= ConsoleColor.Red;
-                    Console.WriteLine($"ID: {itemMinExp!._id} Data: {itemMinExp.Date} Valor: -{itemMinExp.Value} Descrição: {itemMinExp.Description} Categoria: {itemMinExp.Category}");
+                    Console.WriteLine("Despesas com menor valor:");
+                    foreach (var itemMinExpense in minExpenseItems)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"ID: {itemMinExpense!.Id} Data: {itemMinExpense.Date} Valor: -{itemMinExpense.Value} Descrição: {itemMinExpense.Description} Categoria: {itemMinExpense.Category}");
+                    }
                     return;
                 case "2":
                     var minRevenue = FinancialManager.revenueEntries.Min(re => re.Value);
-                    var itemMinRev = FinancialManager.revenueEntries.Find(re => re.Value.Equals(minRevenue));
+                    var minRevenueItems = FinancialManager.revenueEntries.Where(re => re.Value.Equals(minRevenue));
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("Receita com menos valor:");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"ID: {itemMinRev!._id} Data: {itemMinRev.Date} Valor: {itemMinRev.Value} Descrição: {itemMinRev.Description} Categoria: {itemMinRev.Category}");
+                    Console.WriteLine("Receitas com menor valor:");
+                    foreach (var itemMinRevenue in minRevenueItems)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"ID: {itemMinRevenue!.Id} Data: {itemMinRevenue.Date} Valor: {itemMinRevenue.Value} Descrição: {itemMinRevenue.Description} Categoria: {itemMinRevenue.Category}");
+
+                    }
                     return;
             }
         }
@@ -78,20 +84,27 @@ namespace ExpenseTracking.services.searchStrategies
             {
                 case "1":
                     var maxExpense = FinancialManager.expenseEntries.Max(ee => ee.Value);
-                    var itemMaxExp = FinancialManager.expenseEntries.Find(ee => ee.Value.Equals(maxExpense));
+                    var maxExpenseItems = FinancialManager.expenseEntries.Where(ee => ee.Value.Equals(maxExpense));
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("Item com mais valor:");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"ID: {itemMaxExp!._id} Data: {itemMaxExp.Date} Valor: -{itemMaxExp.Value} Descrição: {itemMaxExp.Description} Categoria: {itemMaxExp.Category}");
+                    Console.WriteLine("Despesas com maior valor:");
+                    foreach (var itemMaxExpense in maxExpenseItems)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"ID: {itemMaxExpense!.Id} Data: {itemMaxExpense.Date} Valor: {itemMaxExpense.Value} Descrição: {itemMaxExpense.Description} Categoria: {itemMaxExpense.Category}");
 
+                    }
                     return;
                 case "2":
                     var maxRevenue = FinancialManager.revenueEntries.Max(re => re.Value);
-                    var itemMaxRev = FinancialManager.revenueEntries.Find(re => re.Value.Equals(maxRevenue));
+                    var maxRevenueItems = FinancialManager.revenueEntries.Where(re => re.Value.Equals(maxRevenue));
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("Item com mais valor:");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"ID: {itemMaxRev!._id} Data: {itemMaxRev.Date} Valor: {itemMaxRev.Value} Descrição: {itemMaxRev.Description} Categoria: {itemMaxRev.Category}");
+                    Console.WriteLine("Receitas com maior valor:");
+                    foreach (var itemMaxRevenue in maxRevenueItems)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"ID: {itemMaxRevenue!.Id} Data: {itemMaxRevenue.Date} Valor: {itemMaxRevenue.Value} Descrição: {itemMaxRevenue.Description} Categoria: {itemMaxRevenue.Category}");
+
+                    }
                     return;
 
             }

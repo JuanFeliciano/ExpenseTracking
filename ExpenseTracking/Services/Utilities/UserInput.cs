@@ -1,5 +1,7 @@
 ﻿using ExpenseTracking.managers;
 using ExpenseTracking.models;
+using ExpenseTracking.services.usecases;
+using System;
 using System.Globalization;
 
 namespace ExpenseTracking.services.utilities
@@ -12,10 +14,11 @@ namespace ExpenseTracking.services.utilities
             int idExpense = FinancialManager.expenseEntries.Count;
             int idRevenue = FinancialManager.revenueEntries.Count;
 
-
             while (true)
             {
                 DateOnly date;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Digite ´sair´ a qualquer momento para fechar o programa!");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Digite os dados: ");
 
@@ -25,6 +28,8 @@ namespace ExpenseTracking.services.utilities
                     Console.WriteLine("Data (DD/MM/AAAA): ");
                     Console.ForegroundColor = ConsoleColor.Blue;
                     string dateTime = Console.ReadLine()!.Trim();
+
+                    ExitMethod.Exit(dateTime);
 
                     if (DateOnly.TryParseExact(dateTime, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
                     {
@@ -43,6 +48,8 @@ namespace ExpenseTracking.services.utilities
                     Console.ForegroundColor = ConsoleColor.Blue;
                     string userValue = Console.ReadLine()!.Trim();
 
+                    ExitMethod.Exit(userValue);
+
                     if (float.TryParse(userValue, out value))
                     {
                         break;
@@ -57,10 +64,15 @@ namespace ExpenseTracking.services.utilities
                 Console.WriteLine("Descrição: ");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 string description = Console.ReadLine()!.Trim();
+
+                ExitMethod.Exit(description);
+
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Categoria: ");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 string category = Console.ReadLine()!.Trim();
+
+                ExitMethod.Exit(category);
 
 
 
@@ -72,13 +84,8 @@ namespace ExpenseTracking.services.utilities
                     case "2":
                         idRevenue++;
                         return new FinancialEntry(idRevenue, date, value, description, category);
-                    default:
-                        return null!;
-
                 }
             }
-
-
         }
     }
 }

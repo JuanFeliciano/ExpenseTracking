@@ -1,5 +1,7 @@
 ﻿using ExpenseTracking.managers;
 using ExpenseTracking.models;
+using ExpenseTracking.services.usecases;
+using System;
 
 namespace ExpenseTracking.services.utilities
 {
@@ -7,25 +9,28 @@ namespace ExpenseTracking.services.utilities
     {
         public static void DeleteExpenseData()
         {
-            FinancialEntry itemQuery;
+            ExpenseEntry itemQuery;
 
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Digite ´sair´ para fechar o programa!");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Digite por ID a despesa desejada para edição: ");
+            Console.WriteLine("Digite por ID a despesa desejada para exclusão: ");
             Console.ForegroundColor = ConsoleColor.Blue;
             string id = Console.ReadLine()!.Trim();
+            ExitMethod.Exit(id);
 
-            if(!int.TryParse(id, out int userId))
+            if (!int.TryParse(id, out int userId))
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("ID inválido!");
                 return;
             }
 
-            itemQuery = FinancialManager.expenseEntries.Find(pe => pe._id.Equals(userId))!;
+            itemQuery = FinancialManager.expenseEntries.Find(pe => pe.Id.Equals(userId))!;
 
-            if (itemQuery is ExpenseEntry expenseEntry && itemQuery != null)
+            if (itemQuery != null)
             {
-                FinancialManager.expenseEntries.Remove(expenseEntry);
+                FinancialManager.expenseEntries.Remove(itemQuery);
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Despesa deletada com sucesso!");
             }
@@ -39,12 +44,13 @@ namespace ExpenseTracking.services.utilities
 
         public static void DeleteRevenueData()
         {
-            FinancialEntry itemQuery;
+            RevenueEntry itemQuery;
 
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Digite por ID a receita desejada para edição: ");
+            Console.WriteLine("Digite por ID a receita desejada para exclusão: ");
             Console.ForegroundColor = ConsoleColor.Blue;
             string id = Console.ReadLine()!.Trim();
+            ExitMethod.Exit(id);
 
             if (!int.TryParse(id, out int userId))
             {
@@ -53,11 +59,11 @@ namespace ExpenseTracking.services.utilities
                 return;
             }
 
-            itemQuery = FinancialManager.revenueEntries.Find(pe => pe._id.Equals(userId))!;
+            itemQuery = FinancialManager.revenueEntries.Find(pe => pe.Id.Equals(userId))!;
 
-            if (itemQuery is RevenueEntry revenueEntry && itemQuery != null)
+            if (itemQuery != null)
             {
-                FinancialManager.revenueEntries.Remove(revenueEntry);
+                FinancialManager.revenueEntries.Remove(itemQuery);
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Receita deletada com sucesso!");
             }

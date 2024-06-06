@@ -14,7 +14,7 @@ namespace ExpenseTracking.services.usecases
                 foreach (var ee in matchingExpenses)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"ID: {ee._id} Data: {ee.Date} Valor: -{ee.Value} Descrição: {ee.Description} Categoria: {ee.Category}\n");
+                    Console.WriteLine($"ID: {ee.Id} Data: {ee.Date} Valor: -{ee.Value} Descrição: {ee.Description} Categoria: {ee.Category}\n");
                 }
             }
             else
@@ -33,7 +33,7 @@ namespace ExpenseTracking.services.usecases
                 foreach (var ee in matchingRevenues)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"ID: {ee._id} Data: {ee.Date} Valor: {ee.Value} Descrição: {ee.Description} Categoria: {ee.Category}\n");
+                    Console.WriteLine($"ID: {ee.Id} Data: {ee.Date} Valor: {ee.Value} Descrição: {ee.Description} Categoria: {ee.Category}\n");
                 }
             }
             else

@@ -2,7 +2,7 @@
 {
     public class FinancialEntry
     {
-        public int _id;
+        public int Id { get; }
         public DateOnly Date{ get; set; }
         public float Value { get; set; }
         public string Description { get; set; }
@@ -10,7 +10,7 @@
 
         public FinancialEntry(int id, DateOnly date, float value, string description, string category)
         {
-            _id = id;
+            Id = id;
             Date = date;
             Value = value;
             Description = description;

@@ -2,6 +2,7 @@
 
 using ExpenseTracking.managers;
 using ExpenseTracking.services.usecases;
+using System;
 
 namespace ExpenseTracking.services.searchStrategies
 {
@@ -27,6 +28,8 @@ namespace ExpenseTracking.services.searchStrategies
 
             while (true)
             {
+                Console.ForegroundColor= ConsoleColor.Yellow;
+                Console.WriteLine("Digite ´sair´ a qualquer momento para fechar o programa!");
                 DateOnly initDate;
                 while (true)
                 {
@@ -34,6 +37,8 @@ namespace ExpenseTracking.services.searchStrategies
                     Console.WriteLine("Digite a data inicial (dd/MM/yyyy): ");
                     Console.ForegroundColor = ConsoleColor.Blue;
                     string initialDate = Console.ReadLine()!;
+
+                    ExitMethod.Exit(initialDate);
 
                     if (DateOnly.TryParse(initialDate, out initDate))
                     {
@@ -51,6 +56,14 @@ namespace ExpenseTracking.services.searchStrategies
                     Console.ForegroundColor = ConsoleColor.Blue;
                     string finalDate = Console.ReadLine()!;
 
+                    ExitMethod.Exit(finalDate);
+
+                    if(finDate <= initDate)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Data final não pode ser menor que a inicial!");
+                        continue;
+                    }
                     if (DateOnly.TryParse(finalDate, out finDate))
                     {
                         break;

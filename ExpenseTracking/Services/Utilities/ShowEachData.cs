@@ -17,7 +17,7 @@ namespace ExpenseTracking.services.utilities
                 return;
             }
             Console.ForegroundColor = ConsoleColor.Red;
-            FinancialManager.expenseEntries.ForEach(ee => Console.WriteLine($"ID: {ee._id} Data: {ee.Date} Valor: -{ee.Value} Descrição: {ee.Description} Categoria: {ee.Category}\n"));
+            FinancialManager.expenseEntries.ForEach(ee => Console.WriteLine($"ID: {ee.Id} Data: {ee.Date} Valor: -{ee.Value} Descrição: {ee.Description} Categoria: {ee.Category}\n"));
 
         }
         public static void ShowRevenueData()
@@ -32,7 +32,7 @@ namespace ExpenseTracking.services.utilities
                 return;
             }
             Console.ForegroundColor = ConsoleColor.Green;
-            FinancialManager.revenueEntries.ForEach(re => Console.WriteLine($"ID: {re._id} Data: {re.Date} Valor: {re.Value} Descrição: {re.Description} Categoria: {re.Category}\n"));
+            FinancialManager.revenueEntries.ForEach(re => Console.WriteLine($"ID: {re.Id} Data: {re.Date} Valor: {re.Value} Descrição: {re.Description} Categoria: {re.Category}\n"));
 
         }
     }

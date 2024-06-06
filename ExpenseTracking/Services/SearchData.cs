@@ -8,7 +8,7 @@ namespace ExpenseTracking.services
         {
             ShowMenu.SearchMenu();
             Console.ForegroundColor = ConsoleColor.Blue;
-            string optionSearch = Console.ReadLine()!;
+            string optionSearch = Console.ReadLine()!.Trim();
 
             switch (optionSearch)
             {

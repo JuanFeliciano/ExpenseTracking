@@ -1,4 +1,5 @@
 ﻿using ExpenseTracking.managers;
+using ExpenseTracking.services.usecases;
 
 namespace ExpenseTracking.services.utilities
 {
@@ -6,10 +7,13 @@ namespace ExpenseTracking.services.utilities
     {
         public static void SearchDescriptionExpense()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Digite ´sair´ a qualquer momento para fechar o programa!");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Digite a descrição da despesa que deseja buscar: ");
             Console.ForegroundColor = ConsoleColor.Blue;
             string userDescription = Console.ReadLine()!.ToLower().Trim();
+            ExitMethod.Exit(userDescription);
             var descriptionExpense = FinancialManager.expenseEntries.Where(ee => ee.Description.Equals(userDescription));
 
             if (descriptionExpense.Any())
@@ -34,10 +38,13 @@ namespace ExpenseTracking.services.utilities
 
         public static void SearchDescriptionRevenue()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Digite ´sair´ a qualquer momento para fechar o programa!");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Digite a descrição da receita que deseja buscar: ");
             Console.ForegroundColor = ConsoleColor.Blue;
             string userDescription = Console.ReadLine()!.ToLower().Trim();
+            ExitMethod.Exit(userDescription);
             var descriptionRevenue = FinancialManager.revenueEntries.Where(ee => ee.Description.Equals(userDescription));
 
             if (descriptionRevenue.Any())

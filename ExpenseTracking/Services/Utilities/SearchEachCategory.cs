@@ -1,4 +1,6 @@
 ﻿using ExpenseTracking.managers;
+using ExpenseTracking.services.usecases;
+using System;
 
 namespace ExpenseTracking.services.utilities
 {
@@ -6,10 +8,13 @@ namespace ExpenseTracking.services.utilities
     {
         public static void SearchCategoryExpense()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Digite ´sair´ a qualquer momento para fechar o programa!");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Digite a descrição da despesa que deseja buscar: ");
+            Console.WriteLine("Digite a categoria da despesa que deseja buscar: ");
             Console.ForegroundColor = ConsoleColor.Blue;
             string userCategory = Console.ReadLine()!.ToLower().Trim();
+            ExitMethod.Exit(userCategory);
             var categoryExpense = FinancialManager.expenseEntries.Where(ee => ee.Category.Equals(userCategory));
 
             if (categoryExpense.Any())
@@ -33,11 +38,13 @@ namespace ExpenseTracking.services.utilities
 
         public static void SearchCategoryRevenue()
         {
-
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Digite ´sair´ a qualquer momento para fechar o programa!");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Digite a descrição da receita que deseja buscar: ");
+            Console.WriteLine("Digite a categoria da receita que deseja buscar: ");
             Console.ForegroundColor = ConsoleColor.Blue;
             string userCategory = Console.ReadLine()!.ToLower().Trim();
+            ExitMethod.Exit(userCategory);
             var categoryRevenue = FinancialManager.revenueEntries.Where(ee => ee.Category.Equals(userCategory));
 
             if (categoryRevenue.Any())

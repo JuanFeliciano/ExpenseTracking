@@ -21,7 +21,7 @@ namespace ExpenseTracking.services.searchStrategies
                     SearchEachCategory.SearchCategoryExpense();
                     return;
                 case "2":
-                    if (FinancialManager.expenseEntries.Count <= 0)
+                    if (FinancialManager.revenueEntries.Count <= 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Não existem itens na lista!");
