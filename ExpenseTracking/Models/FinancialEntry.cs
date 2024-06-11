@@ -1,6 +1,8 @@
-﻿namespace ExpenseTracking.models
+﻿using ExpenseTracking.managers;
+
+namespace ExpenseTracking.models
 {
-    public class FinancialEntry
+    public abstract class FinancialEntry
     {
         public int Id { get; }
         public DateOnly Date{ get; set; }

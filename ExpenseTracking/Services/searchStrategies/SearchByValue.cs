@@ -8,25 +8,20 @@ namespace ExpenseTracking.services.searchStrategies
         {
             string option = MainProgram.GetOption();
 
-            switch (option)
+
+            if (option == "1" && !FinancialManager.expenseEntries.Any())
             {
-                case "1":
-                    if (FinancialManager.expenseEntries.Count == 0)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("Não existem despesas para busca!");
-                        return;
-                    }
-                    break;
-                case "2":
-                    if (FinancialManager.revenueEntries.Count == 0)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("Não existem receitas para busca!");
-                        return;
-                    }
-                    break;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Não existem despesas para busca!");
+                return;
             }
+            if (option == "2" && !FinancialManager.revenueEntries.Any())
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Não existem receitas para busca!");
+                return;
+            }
+
 
             switch (option)
             {
@@ -59,24 +54,17 @@ namespace ExpenseTracking.services.searchStrategies
         {
             string option = MainProgram.GetOption();
 
-            switch (option)
+            if (option == "1" && !FinancialManager.expenseEntries.Any())
             {
-                case "1":
-                    if (FinancialManager.expenseEntries.Count == 0)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("Não existem despesas para busca!");
-                        return;
-                    }
-                    break;
-                case "2":
-                    if (FinancialManager.revenueEntries.Count == 0)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("Não existem receitas para busca!");
-                        return;
-                    }
-                    break;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Não existem despesas para busca!");
+                return;
+            }
+            if (option == "2" && !FinancialManager.revenueEntries.Any())
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Não existem receitas para busca!");
+                return;
             }
 
 

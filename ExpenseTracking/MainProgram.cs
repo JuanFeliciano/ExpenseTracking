@@ -6,15 +6,11 @@ namespace ExpenseTracking
     internal static class MainProgram
     {
         private static string? option;
-        private delegate void Menu();
         public static void Main()
         {
-            
             while (true)
             {
-                Menu showMenu = new Menu(ShowMenu.MenuMain);
-
-                showMenu();
+                ShowMenu.MenuMain();
 
                 Console.ForegroundColor = ConsoleColor.Blue;
                 option = Console.ReadLine()!.Trim();

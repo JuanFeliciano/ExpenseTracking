@@ -9,7 +9,7 @@ namespace ExpenseTracking.services
         public static void AddDatas()
         {
             string menuOption = MainProgram.GetOption();
-            var userInput = UserInput.CollectUserInput();
+            FinancialEntry userInput = UserInput.CollectUserInput();
 
             switch (menuOption)
             {

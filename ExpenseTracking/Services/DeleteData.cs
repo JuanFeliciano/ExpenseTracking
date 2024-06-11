@@ -7,8 +7,6 @@ namespace ExpenseTracking.services
         public static void DeleteDatas()
         {
             string option = MainProgram.GetOption();
-            var lenghtExpense = FinancialManager.expenseEntries.Count;
-            var lenghtRevenue = FinancialManager.revenueEntries.Count;
 
 
             while (true)
@@ -18,13 +16,13 @@ namespace ExpenseTracking.services
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Você tem certeza desta ação? (s/n): ");
                 Console.ForegroundColor = ConsoleColor.Blue;
-                string sure = Console.ReadLine()!.Trim().ToLower();
+                string validation = Console.ReadLine()!.Trim().ToLower();
 
 
 
-                if (sure == "s" && option == "1")
+                if (validation == "s" && option == "1")
                 {
-                    if (lenghtExpense == 0)
+                    if (FinancialManager.expenseEntries.Count == 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Não existem despesas para serem excluídas");
@@ -35,15 +33,15 @@ namespace ExpenseTracking.services
                     Console.WriteLine("Todos as despesas removidas!");
                     return;
                 }
-                else if (sure == "n" && option == "1")
+                else if (validation == "n" && option == "1")
                 {
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("Voltando ao menu principal!");
                     return;
                 }
-                else if (sure == "s" && option == "2")
+                else if (validation == "s" && option == "2")
                 {
-                    switch (lenghtRevenue)
+                    switch (FinancialManager.revenueEntries.Count)
                     {
                         case 0:
                             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -55,9 +53,9 @@ namespace ExpenseTracking.services
                     Console.WriteLine("Todos as receitas removidos!");
                     return;
                 }
-                else if (sure == "n" && option == "2")
+                else if (validation == "n" && option == "2")
                 {
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("Voltando ao menu principal!");
                     return;
                 }

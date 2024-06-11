@@ -11,10 +11,10 @@ namespace ExpenseTracking.services.usecases
 
             if (matchingExpenses.Any())
             {
-                foreach (var ee in matchingExpenses)
+                foreach (var matchExpense in matchingExpenses)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"ID: {ee.Id} Data: {ee.Date} Valor: -{ee.Value} Descrição: {ee.Description} Categoria: {ee.Category}\n");
+                    Console.WriteLine($"ID: {matchExpense.Id} Data: {matchExpense.Date} Valor: -{matchExpense.Value} Descrição: {matchExpense.Description} Categoria: {matchExpense.Category}\n");
                 }
             }
             else
@@ -30,10 +30,10 @@ namespace ExpenseTracking.services.usecases
 
             if (matchingRevenues.Any())
             {
-                foreach (var ee in matchingRevenues)
+                foreach (var matchRevenue in matchingRevenues)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"ID: {ee.Id} Data: {ee.Date} Valor: {ee.Value} Descrição: {ee.Description} Categoria: {ee.Category}\n");
+                    Console.WriteLine($"ID: {matchRevenue.Id} Data: {matchRevenue.Date} Valor: {matchRevenue.Value} Descrição: {matchRevenue.Description} Categoria: {matchRevenue.Category}\n");
                 }
             }
             else

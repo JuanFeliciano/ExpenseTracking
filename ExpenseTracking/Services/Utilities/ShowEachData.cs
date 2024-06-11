@@ -10,7 +10,7 @@ namespace ExpenseTracking.services.utilities
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Despesas: ");
 
-            if (FinancialManager.expenseEntries.Count <= 0)
+            if (!FinancialManager.expenseEntries.Any())
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Não existem despesas para mostrar!");
@@ -25,7 +25,7 @@ namespace ExpenseTracking.services.utilities
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Receitas:");
 
-            if (FinancialManager.revenueEntries.Count <= 0)
+            if (!FinancialManager.revenueEntries.Any())
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Não existem receitas para mostrar!");

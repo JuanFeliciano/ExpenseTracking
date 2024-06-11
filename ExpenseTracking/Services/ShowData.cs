@@ -12,7 +12,7 @@ namespace ExpenseTracking.services
             switch (option)
             {
                 case "1":
-                    if (FinancialManager.expenseEntries.Count <= 0)
+                    if (!FinancialManager.expenseEntries.Any())
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Não existem despesas na lista!");
@@ -21,7 +21,7 @@ namespace ExpenseTracking.services
                     ShowEachData.ShowExpenseData();
                     return;
                 case "2":
-                    if (FinancialManager.revenueEntries.Count <= 0)
+                    if (!FinancialManager.revenueEntries.Any())
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Não existem receitas na lista!");

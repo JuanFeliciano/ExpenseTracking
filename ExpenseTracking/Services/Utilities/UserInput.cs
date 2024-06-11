@@ -79,11 +79,9 @@ namespace ExpenseTracking.services.utilities
                 switch (menuOption)
                 {
                     case "1":
-                        idExpense++;
-                        return new FinancialEntry(idExpense, date, value, description, category);
+                        return new ExpenseEntry(idExpense, date, value, description, category);
                     case "2":
-                        idRevenue++;
-                        return new FinancialEntry(idRevenue, date, value, description, category);
+                        return new RevenueEntry(idRevenue, date, value, description, category);
                 }
             }
         }

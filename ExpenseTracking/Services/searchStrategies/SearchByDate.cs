@@ -12,14 +12,14 @@ namespace ExpenseTracking.services.searchStrategies
         {
             string option = MainProgram.GetOption();
 
-            if (option == "1" && FinancialManager.expenseEntries.Count == 0)
+            if (option == "1" && !FinancialManager.expenseEntries.Any())
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Não existem dados para busca!");
                 return;
             }
 
-            if (option == "2" && FinancialManager.revenueEntries.Count == 0)
+            if (option == "2" && !FinancialManager.revenueEntries.Any())
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Não existem dados para busca!");
