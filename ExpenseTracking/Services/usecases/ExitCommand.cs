@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracking.services.usecases
 {
-    internal class ExitMethod
+    internal class ExitCommand
     {
-        public static void Exit(string value)
+        public static void Check(string value)
         {
             if (value == "sair")
             {

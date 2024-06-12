@@ -12,14 +12,14 @@ namespace ExpenseTracking.services.searchStrategies
         {
             string option = MainProgram.GetOption();
 
-            if (option == "1" && !FinancialManager.expenseEntries.Any())
+            if (option == "1" && FinancialManager.expenseEntries.Any() == false)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Não existem dados para busca!");
                 return;
             }
 
-            if (option == "2" && !FinancialManager.revenueEntries.Any())
+            if (option == "2" && FinancialManager.revenueEntries.Any() == false)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Não existem dados para busca!");
@@ -28,7 +28,7 @@ namespace ExpenseTracking.services.searchStrategies
 
             while (true)
             {
-                Console.ForegroundColor= ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Digite ´sair´ a qualquer momento para fechar o programa!");
                 DateOnly initDate;
                 while (true)
@@ -38,7 +38,7 @@ namespace ExpenseTracking.services.searchStrategies
                     Console.ForegroundColor = ConsoleColor.Blue;
                     string initialDate = Console.ReadLine()!;
 
-                    ExitMethod.Exit(initialDate);
+                    ExitCommand.Check(initialDate);
 
                     if (DateOnly.TryParse(initialDate, out initDate))
                     {
@@ -56,21 +56,20 @@ namespace ExpenseTracking.services.searchStrategies
                     Console.ForegroundColor = ConsoleColor.Blue;
                     string finalDate = Console.ReadLine()!;
 
-                    ExitMethod.Exit(finalDate);
+                    ExitCommand.Check(finalDate);
 
-                    if(finDate <= initDate)
+                    if (!DateOnly.TryParse(finalDate, out finDate))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Formato digitado é inválido, por favor digite novamente (dd/MM/yyyy):");
+                    }
+                    if (finDate <= initDate)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Data final não pode ser menor que a inicial!");
                         continue;
                     }
-                    if (DateOnly.TryParse(finalDate, out finDate))
-                    {
-                        break;
-                    }
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("Formato digitado é inválido, por favor digite novamente (dd/MM/yyyy): ");
-
+                    break;
                 }
 
                 switch (option)

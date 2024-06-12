@@ -1,4 +1,5 @@
 ﻿using ExpenseTracking.managers;
+using ExpenseTracking.models;
 
 namespace ExpenseTracking.services.utilities
 {
@@ -10,29 +11,30 @@ namespace ExpenseTracking.services.utilities
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Despesas: ");
 
-            if (!FinancialManager.expenseEntries.Any())
+            if (FinancialManager.expenseEntries.Any() == false)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Não existem despesas para mostrar!");
                 return;
             }
             Console.ForegroundColor = ConsoleColor.Red;
-            FinancialManager.expenseEntries.ForEach(ee => Console.WriteLine($"ID: {ee.Id} Data: {ee.Date} Valor: -{ee.Value} Descrição: {ee.Description} Categoria: {ee.Category}\n"));
+            FinancialManager.expenseEntries.ForEach(i => FinancialEntry.PrintData(i));
 
         }
         public static void ShowRevenueData()
         {
+
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Receitas:");
 
-            if (!FinancialManager.revenueEntries.Any())
+            if (FinancialManager.revenueEntries.Any() == false)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Não existem receitas para mostrar!");
                 return;
             }
             Console.ForegroundColor = ConsoleColor.Green;
-            FinancialManager.revenueEntries.ForEach(re => Console.WriteLine($"ID: {re.Id} Data: {re.Date} Valor: {re.Value} Descrição: {re.Description} Categoria: {re.Category}\n"));
+            FinancialManager.revenueEntries.ForEach(i => FinancialEntry.PrintData(i));
 
         }
     }

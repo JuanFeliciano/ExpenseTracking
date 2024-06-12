@@ -7,39 +7,35 @@ namespace ExpenseTracking.services.usecases
     {
         public static void DateExpenseFilter(DateOnly initDate, DateOnly finDate)
         {
-            IEnumerable<ExpenseEntry> matchingExpenses = FinancialManager.expenseEntries.Where(ee => ee.Date >= initDate && ee.Date <= finDate);
 
-            if (matchingExpenses.Any())
-            {
-                foreach (var matchExpense in matchingExpenses)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"ID: {matchExpense.Id} Data: {matchExpense.Date} Valor: -{matchExpense.Value} Descrição: {matchExpense.Description} Categoria: {matchExpense.Category}\n");
-                }
-            }
-            else
+            IEnumerable<ExpenseEntry> matchingExpenses = FinancialManager.expenseEntries.Where(i => i.Date >= initDate && i.Date <= finDate);
+
+            if (matchingExpenses.Any() == false)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Não existem despesas para busca!");
+            }
+            foreach (var matchExpense in matchingExpenses)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                FinancialEntry.PrintData(matchExpense);
             }
         }
 
         public static void DateRevenueFilter(DateOnly initDate, DateOnly finDate)
         {
-            IEnumerable<RevenueEntry> matchingRevenues = FinancialManager.revenueEntries.Where(ee => ee.Date >= initDate && ee.Date <= finDate);
 
-            if (matchingRevenues.Any())
-            {
-                foreach (var matchRevenue in matchingRevenues)
-                {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"ID: {matchRevenue.Id} Data: {matchRevenue.Date} Valor: {matchRevenue.Value} Descrição: {matchRevenue.Description} Categoria: {matchRevenue.Category}\n");
-                }
-            }
-            else
+            IEnumerable<RevenueEntry> matchingRevenues = FinancialManager.revenueEntries.Where(i => i.Date >= initDate && i.Date <= finDate);
+
+            if (matchingRevenues.Any() == false)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Não existem receitas para busca!");
+            }
+            foreach (var matchRevenue in matchingRevenues)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                FinancialEntry.PrintData(matchRevenue);
             }
         }
     }

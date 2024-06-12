@@ -18,9 +18,6 @@ namespace ExpenseTracking
                 switch (option)
                 {
                     case "1":
-                        Console.Clear();
-                        MenuDefault.MenuOption();
-                        break;
                     case "2":
                         Console.Clear();
                         MenuDefault.MenuOption();

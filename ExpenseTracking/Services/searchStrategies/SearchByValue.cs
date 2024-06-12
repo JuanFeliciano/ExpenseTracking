@@ -1,4 +1,5 @@
 ﻿using ExpenseTracking.managers;
+using ExpenseTracking.models;
 
 namespace ExpenseTracking.services.searchStrategies
 {
@@ -9,13 +10,13 @@ namespace ExpenseTracking.services.searchStrategies
             string option = MainProgram.GetOption();
 
 
-            if (option == "1" && !FinancialManager.expenseEntries.Any())
+            if (option == "1" && FinancialManager.expenseEntries.Any() == false)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Não existem despesas para busca!");
                 return;
             }
-            if (option == "2" && !FinancialManager.revenueEntries.Any())
+            if (option == "2" && FinancialManager.revenueEntries.Any() == false)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Não existem receitas para busca!");
@@ -26,26 +27,25 @@ namespace ExpenseTracking.services.searchStrategies
             switch (option)
             {
                 case "1":
-                    var minExpense = FinancialManager.expenseEntries.Min(ee => ee.Value);
-                    var minExpenseItems = FinancialManager.expenseEntries.Where(ee => ee.Value.Equals(minExpense));
+                    var minExpense = FinancialManager.expenseEntries.Min(i => i.Value);
+                    var minExpenseItems = FinancialManager.expenseEntries.Where(i => i.Value.Equals(minExpense));
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Despesas com menor valor:");
                     foreach (var itemMinExpense in minExpenseItems)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine($"ID: {itemMinExpense!.Id} Data: {itemMinExpense.Date} Valor: -{itemMinExpense.Value} Descrição: {itemMinExpense.Description} Categoria: {itemMinExpense.Category}");
+                        FinancialEntry.PrintData(itemMinExpense);
                     }
                     return;
                 case "2":
-                    var minRevenue = FinancialManager.revenueEntries.Min(re => re.Value);
-                    var minRevenueItems = FinancialManager.revenueEntries.Where(re => re.Value.Equals(minRevenue));
+                    var minRevenue = FinancialManager.revenueEntries.Min(i => i.Value);
+                    var minRevenueItems = FinancialManager.revenueEntries.Where(i => i.Value.Equals(minRevenue));
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Receitas com menor valor:");
                     foreach (var itemMinRevenue in minRevenueItems)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine($"ID: {itemMinRevenue!.Id} Data: {itemMinRevenue.Date} Valor: {itemMinRevenue.Value} Descrição: {itemMinRevenue.Description} Categoria: {itemMinRevenue.Category}");
-
+                        FinancialEntry.PrintData(itemMinRevenue);
                     }
                     return;
             }
@@ -54,13 +54,13 @@ namespace ExpenseTracking.services.searchStrategies
         {
             string option = MainProgram.GetOption();
 
-            if (option == "1" && !FinancialManager.expenseEntries.Any())
+            if (option == "1" && FinancialManager.expenseEntries.Any() == false)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Não existem despesas para busca!");
                 return;
             }
-            if (option == "2" && !FinancialManager.revenueEntries.Any())
+            if (option == "2" && FinancialManager.revenueEntries.Any() == false)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Não existem receitas para busca!");
@@ -71,27 +71,25 @@ namespace ExpenseTracking.services.searchStrategies
             switch (option)
             {
                 case "1":
-                    var maxExpense = FinancialManager.expenseEntries.Max(ee => ee.Value);
-                    var maxExpenseItems = FinancialManager.expenseEntries.Where(ee => ee.Value.Equals(maxExpense));
+                    var maxExpense = FinancialManager.expenseEntries.Max(i => i.Value);
+                    var maxExpenseItems = FinancialManager.expenseEntries.Where(i => i.Value.Equals(maxExpense));
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Despesas com maior valor:");
                     foreach (var itemMaxExpense in maxExpenseItems)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine($"ID: {itemMaxExpense!.Id} Data: {itemMaxExpense.Date} Valor: {itemMaxExpense.Value} Descrição: {itemMaxExpense.Description} Categoria: {itemMaxExpense.Category}");
-
+                        FinancialEntry.PrintData(itemMaxExpense);
                     }
                     return;
                 case "2":
-                    var maxRevenue = FinancialManager.revenueEntries.Max(re => re.Value);
-                    var maxRevenueItems = FinancialManager.revenueEntries.Where(re => re.Value.Equals(maxRevenue));
+                    var maxRevenue = FinancialManager.revenueEntries.Max(i => i.Value);
+                    var maxRevenueItems = FinancialManager.revenueEntries.Where(i => i.Value.Equals(maxRevenue));
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Receitas com maior valor:");
                     foreach (var itemMaxRevenue in maxRevenueItems)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine($"ID: {itemMaxRevenue!.Id} Data: {itemMaxRevenue.Date} Valor: {itemMaxRevenue.Value} Descrição: {itemMaxRevenue.Description} Categoria: {itemMaxRevenue.Category}");
-
+                        FinancialEntry.PrintData(itemMaxRevenue);
                     }
                     return;
 

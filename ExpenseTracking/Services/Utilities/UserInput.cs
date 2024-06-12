@@ -3,16 +3,17 @@ using ExpenseTracking.models;
 using ExpenseTracking.services.usecases;
 using System;
 using System.Globalization;
+using System.Security;
 
 namespace ExpenseTracking.services.utilities
 {
     internal class UserInput
     {
+        public static int idExpense = 0;
+        public static int idRevenue = 0;
         public static FinancialEntry CollectUserInput()
         {
             string menuOption = MainProgram.GetOption();
-            int idExpense = FinancialManager.expenseEntries.Count;
-            int idRevenue = FinancialManager.revenueEntries.Count;
 
             while (true)
             {
@@ -29,7 +30,7 @@ namespace ExpenseTracking.services.utilities
                     Console.ForegroundColor = ConsoleColor.Blue;
                     string dateTime = Console.ReadLine()!.Trim();
 
-                    ExitMethod.Exit(dateTime);
+                    ExitCommand.Check(dateTime);
 
                     if (DateOnly.TryParseExact(dateTime, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
                     {
@@ -48,8 +49,14 @@ namespace ExpenseTracking.services.utilities
                     Console.ForegroundColor = ConsoleColor.Blue;
                     string userValue = Console.ReadLine()!.Trim();
 
-                    ExitMethod.Exit(userValue);
+                    ExitCommand.Check(userValue);
 
+                    if (userValue[0] == '-')
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Não é possivel adicionar valores negativos!");
+                        continue;
+                    }
                     if (float.TryParse(userValue, out value))
                     {
                         break;
@@ -65,22 +72,22 @@ namespace ExpenseTracking.services.utilities
                 Console.ForegroundColor = ConsoleColor.Blue;
                 string description = Console.ReadLine()!.Trim();
 
-                ExitMethod.Exit(description);
+                ExitCommand.Check(description);
 
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Categoria: ");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 string category = Console.ReadLine()!.Trim();
 
-                ExitMethod.Exit(category);
-
-
+                ExitCommand.Check(category);
 
                 switch (menuOption)
                 {
                     case "1":
+                        idExpense++;
                         return new ExpenseEntry(idExpense, date, value, description, category);
                     case "2":
+                        idRevenue++;
                         return new RevenueEntry(idRevenue, date, value, description, category);
                 }
             }

@@ -9,6 +9,7 @@ namespace ExpenseTracking.services.utilities
     {
         public static void EditExpenseData()
         {
+
             ExpenseEntry itemQuery;
 
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -16,32 +17,40 @@ namespace ExpenseTracking.services.utilities
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Digite por ID o item desejado para editar: ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            string idUser = Console.ReadLine()!.Trim();
-            ExitMethod.Exit(idUser);
-            int id = int.Parse(idUser);
+            string id = Console.ReadLine()!.Trim();
+            ExitCommand.Check(id);
+            int parseId;
 
-            itemQuery = FinancialManager.expenseEntries.Find(pe => pe.Id.Equals(id))!;
-
-            if (itemQuery != null)
-            {
-                FinancialManager.expenseEntries.Remove(itemQuery);
-            }
-            else
+            if (int.TryParse(id, out parseId) == false)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("ID inválido!");
+                Console.WriteLine("ID fornecido é inválido ou inexistente!");
                 return;
             }
+
+            itemQuery = FinancialManager.expenseEntries.Find(i => i.Id.Equals(parseId))!;
+
+            if (itemQuery is null)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("ID inválido ou inexistente!");
+                return;
+            }
+                
+
             var userInput = UserInput.CollectUserInput();
-            FinancialManager.expenseEntries.Add(new ExpenseEntry(id, userInput.Date, userInput.Value, userInput.Description, userInput.Category));
+            FinancialManager.expenseEntries.Remove(itemQuery);
+            FinancialManager.expenseEntries.Add(new ExpenseEntry(parseId, userInput.Date, userInput.Value, userInput.Description, userInput.Category));
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Despesa editada com sucesso!\nID: {id} Data: {userInput!.Date} Valor: -{userInput.Value} Descrição: {userInput.Description} Categoria: {userInput.Category}");
+            Console.WriteLine($"Despesa editada com sucesso!");
+            FinancialEntry.PrintData(userInput);
             return;
         }
 
         public static void EditRevenueData()
         {
+
             RevenueEntry itemQuery;
 
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -49,11 +58,18 @@ namespace ExpenseTracking.services.utilities
             Console.ForegroundColor = ConsoleColor.White; 
             Console.WriteLine("Digite por ID o item desejado para editar: ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            string idUser = Console.ReadLine()!.Trim();
-            ExitMethod.Exit(idUser);
-            int id = int.Parse(idUser);
+            string id = Console.ReadLine()!.Trim();
+            ExitCommand.Check(id);
+            int parseId;
 
-            itemQuery = FinancialManager.revenueEntries.Find(pe => pe.Id.Equals(id))!;
+            if (int.TryParse(id, out parseId) == false)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("ID fornecido é inválido ou inexistente!");
+                return;
+            }
+
+            itemQuery = FinancialManager.revenueEntries.Find(i => i.Id.Equals(parseId))!;
             if (itemQuery != null)
             {
                 FinancialManager.revenueEntries.Remove(itemQuery);
@@ -65,10 +81,11 @@ namespace ExpenseTracking.services.utilities
                 return;
             }
             var userInput = UserInput.CollectUserInput();
-            FinancialManager.revenueEntries.Add(new RevenueEntry(id, userInput.Date, userInput.Value, userInput.Description, userInput.Category));
+            FinancialManager.revenueEntries.Add(new RevenueEntry(parseId, userInput.Date, userInput.Value, userInput.Description, userInput.Category));
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Receita editada com sucesso!\nID: {id} Data: {userInput!.Date} Valor: {userInput.Value} Descrição: {userInput.Description} Categoria: {userInput.Category}");
+            Console.WriteLine($"Receita editada com sucesso");
+            FinancialEntry.PrintData(userInput);
             return;
         }
     }

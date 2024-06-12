@@ -12,7 +12,7 @@ namespace ExpenseTracking.services
             switch (option)
             {
                 case "1":
-                    if (!FinancialManager.expenseEntries.Any())
+                    if (FinancialManager.expenseEntries.Any() == false) 
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Não existem despesas para edição!");
@@ -21,7 +21,7 @@ namespace ExpenseTracking.services
                     EditEachData.EditExpenseData();
                     return;
                 case "2":
-                    if (!FinancialManager.revenueEntries.Any())
+                    if (FinancialManager.revenueEntries.Any() == false)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Não existem receitas para edição!");

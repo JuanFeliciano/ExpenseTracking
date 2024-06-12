@@ -5,16 +5,7 @@
         public string PluralReturn()
         {
             string option = MainProgram.GetOption();
-            string plural = "";
-
-            if (option == "1")
-            {
-                plural = "despesas";
-            }
-            else if (option == "2")
-            {
-                plural = "receitas";
-            }
+            string plural = option == "1" ? "despesas" : "receitas";
 
             return plural;
         }
@@ -22,16 +13,7 @@
         public string SingularReturn()
         {
             string option = MainProgram.GetOption();
-            string singular = "";
-
-            if (option == "1")
-            {
-                singular = "despesa";
-            }
-            else if (option == "2")
-            {
-                singular = "receita";
-            }
+            string singular = option == "1" ? "despesa" : "receita";
 
             return singular;
         }

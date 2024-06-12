@@ -22,7 +22,7 @@ namespace ExpenseTracking.services
 
                 if (validation == "s" && option == "1")
                 {
-                    if (FinancialManager.expenseEntries.Count == 0)
+                    if (FinancialManager.expenseEntries.Any() == false)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Não existem despesas para serem excluídas");
@@ -41,9 +41,8 @@ namespace ExpenseTracking.services
                 }
                 else if (validation == "s" && option == "2")
                 {
-                    switch (FinancialManager.revenueEntries.Count)
+                    if (FinancialManager.revenueEntries.Any() == false)
                     {
-                        case 0:
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Não existem receitas para serem excluídas");
                             return;
